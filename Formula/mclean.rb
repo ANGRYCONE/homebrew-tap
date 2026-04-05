@@ -5,6 +5,8 @@ class Mclean < Formula
   sha256 "0a77ee7fb4f2451b50a48661d85f325ec974e650157f50ca5dd1476a6b08848c"
   version "2.3"
 
+  depends_on :macos
+
   def install
     libexec.install "macos_cleaner.sh"
     (bin/"mclean").write <<~SH
