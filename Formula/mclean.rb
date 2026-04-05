@@ -6,6 +6,11 @@ class Mclean < Formula
   version "2.3"
 
   def install
-    bin.install "macos_cleaner.sh" => "mclean"
+    libexec.install "macos_cleaner.sh"
+    (bin/"mclean").write <<~SH
+      #!/bin/sh
+      exec "#{libexec}/macos_cleaner.sh" --skip-update "$@"
+    SH
+    chmod 0755, libexec/"macos_cleaner.sh"
   end
 end
